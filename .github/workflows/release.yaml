@@ -3,7 +3,7 @@ name: Release
 on:
   push:
     # Build and publish artifacts for a release
-    branches:
+    tags:
       - "v*.*.*"
 
 jobs:
