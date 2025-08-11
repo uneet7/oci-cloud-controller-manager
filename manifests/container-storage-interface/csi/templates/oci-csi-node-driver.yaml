@@ -117,8 +117,6 @@ spec:
             - --loglevel=debug
             - --fss-endpoint=unix:///fss/csi.sock
             - --lustre-endpoint=unix:///lustre/csi.sock
-            - --lustre-csi-address=/lustre/csi.sock
-            - --lustre-kubelet-registration-path=/var/lib/kubelet/plugins/{{ if .Values.customHandle }}{{ .Values.customHandle }}.{{ end }}lustre.csi.oraclecloud.com/csi.sock
           command:
             - /usr/local/bin/oci-csi-node-driver
           env:
@@ -137,7 +135,7 @@ spec:
               value: "{{ if .Values.customHandle }}{{ .Values.customHandle }}.{{ end }}fss.csi.oraclecloud.com"
             - name: LUSTRE_VOLUME_DRIVER_NAME
               value: "{{ if .Values.customHandle }}{{ .Values.customHandle }}.{{ end }}lustre.csi.oraclecloud.com"
-          image: ghcr.io/yashasg98/cloud-provider-oci:vcustomize.driver.name2
+          image: ghcr.io/uneet7/cloud-provider-oci:v0.0.2
           securityContext:
             privileged: true
           volumeMounts:
